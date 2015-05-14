@@ -11,7 +11,7 @@ describe 'static_pages' do
     end
 
     it "has the rigth title" do
-      expect(page.title).to eq("Olakase, Home")
+      expect(page.title).to eq("Olakase")
     end
 
   end
