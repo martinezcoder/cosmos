@@ -40,6 +40,8 @@ group :development, :test do
   gem 'capybara'
 end
 
+gem 'annotate', '~> 2.5.0', group: :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
