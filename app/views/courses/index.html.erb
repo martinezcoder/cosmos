@@ -1,0 +1,13 @@
+<% provide(:title, 'Course list') %>
+<h1>Course list</h1>
+
+<ul class="courses">
+  <% @courses.each do |course| %>
+    <li>
+      <%= link_to course.name, course %>
+      <%= link_to 'Edit', edit_course_path(course) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New course", new_course_path %>

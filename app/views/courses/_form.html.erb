@@ -1,0 +1,12 @@
+    <%= form_for(@course) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :summary %>
+      <%= f.text_field :summary %>
+
+      <%= f.submit "Save my course", class: "btn btn-large btn-primary" %>
+    <% end %>
+

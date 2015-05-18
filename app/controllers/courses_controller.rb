@@ -18,6 +18,24 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit
+    @course = Course.find(params[:id])
+  end
+
+  def update
+    @course = Course.find(params[:id])
+    if @course.update_attributes(course_params)
+      flash[:success] = "Changes saved!"
+      redirect_to @course
+    else
+      render 'edit'
+    end
+  end
+
+  def index
+    @courses = Course.all
+  end
+
   private
 
     def course_params
