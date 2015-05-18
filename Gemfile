@@ -33,11 +33,15 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
   gem 'pry'
   gem 'pry-byebug'
+end
+
+group :test do
+  gem 'factory_girl_rails', '4.5.0'
   gem 'capybara'
+  gem 'rspec-rails', '3.2.1'
+  gem 'shoulda-matchers'
 end
 
 gem 'annotate', '~> 2.5.0', group: :development
