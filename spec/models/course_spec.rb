@@ -21,18 +21,48 @@ RSpec.describe Course, type: :model do
   end
 
   describe "validations" do
-    it "validates the model" do
-      expect(course).to be_valid
+
+    describe "when all is ok" do
+      it "course is valid" do
+        expect(course).to be_valid
+      end
     end
 
-    describe "validates parameters" do
-      [:name, :summary].each do |field|
-        it "validates presence of #{field}" do
-          course["#{field}"] = nil
+    [:name, :summary].each do |field|
+      describe "when #{field} is nil" do
+        before { course["#{field}"] = nil }
+        it "course is not valid" do
           expect(course).not_to be_valid
         end
       end
     end
 
+    describe "when name is too long" do
+      before { course.name = "a" * 51 }
+      it "course is not valid" do
+        expect(course).not_to be_valid
+      end
+    end
+
+    describe "when summary is too long" do
+      before { course.name = "a" * 256 }
+      it "course is not valid" do
+        expect(course).not_to be_valid
+      end
+    end
+
+    describe "when name is already taken" do
+      before do
+        course_with_same_name = course.dup
+        course_with_same_name.save
+      end
+
+      it "course is not valid" do
+        expect(course).not_to be_valid
+      end
+
+    end
+
   end
+
 end
